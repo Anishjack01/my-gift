@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Special Surprise for You ❤️</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #000000, #643223);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: background 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #f06; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #f06; }
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #f06;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .heart {
+            font-size: 4em;
+            animation: pulse 1s infinite;
+            color: red;
+            margin-top: 20px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Welcome Section -->
+<div id="section1">
+    <h1>Hey Beautiful! ❤️</h1>
+    <p>I've got a little surprise for you...</p>
+    <button onclick="showSection(2)">Open Your Gift 🎁</button>
+</div>
+
+<!-- Message Section -->
+<div id="section2" class="hidden">
+    <h1>You are My Everything 💖</h1>
+    <p>I may not be perfect... but loving you is the best thing I ever did.<br>You make my life beautiful! 😘</p>
+    <button onclick="showSection(3)">Next ➡️</button>
+</div>
+
+<!-- Final Thank You Section with Yes/No -->
+<div id="section3" class="hidden">
+    <h1>Do You Love Me? 😍</h1>
+    <button onclick="alert('Aww! Love you too! 😘')">Yes ❤️</button>
+    <button id="noButton">No 😜</button>
+</div>
+
+<script>
+    function showSection(sectionNumber) {
+        document.body.style.background = sectionNumber === 2 
+            ? 'linear-gradient(45deg, #ff758c, #ff7eb3)' 
+            : sectionNumber === 3 
+                ? 'linear-gradient(135deg, #89f7fe, #66a6ff)' 
+                : 'linear-gradient(135deg, #000000, #643223)';
+
+        document.getElementById("section1").classList.add("hidden");
+        document.getElementById("section2").classList.add("hidden");
+        document.getElementById("section3").classList.add("hidden");
+
+        document.getElementById("section" + sectionNumber).classList.remove("hidden");
+    }
+
+    const noBtn = document.getElementById('noButton');
+    noBtn.addEventListener('mouseover', () => {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+    });
+</script>
+
+</body>
+</html>
